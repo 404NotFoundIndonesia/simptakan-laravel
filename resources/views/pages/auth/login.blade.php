@@ -10,21 +10,23 @@
 <div class="card">
     <div class="card-body">
         <div class="m-sm-4">
-            <form>
+            <form action="{{ route('auth.sign-in') }}" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label class="form-label">Email</label>
-                    <input class="form-control form-control-lg" type="email" name="email" placeholder="Masukkan email" />
+                    <input class="form-control @error('email') is-invalid @enderror form-control-lg" type="email" name="email" placeholder="Masukkan email" value="{{ old('email') }}" />
+                    <span class="error invalid-feedback">{{ $errors->first('email') }}</span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Password</label>
-                    <input class="form-control form-control-lg" type="password" name="password" placeholder="Masukkan password" />
+                    <input class="form-control  @error('password') is-invalid @enderror form-control-lg" type="password" name="password" placeholder="Masukkan password" />
+                    <span class="error invalid-feedback">{{ $errors->first('password') }}</span>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="{{ route('dashboard') }}" class="btn btn-lg btn-dark">Masuk</a>
-                    <!-- <button type="submit" class="btn btn-lg btn-dark">Masuk</button> -->
+                    <button type="submit" class="btn btn-lg btn-dark">Masuk</button>
                 </div>
                 <small>
-                    <a href="{{ route('auth.register') }}">Buat akun</a>
+                    <a href="{{ route('register') }}">Buat akun</a>
                 </small>
             </form>
         </div>

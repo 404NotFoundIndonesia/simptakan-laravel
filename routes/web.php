@@ -6,7 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 
-Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/sign-in', [AuthController::class, 'signIn'])->name('auth.sign-in');
+Route::post('/sign-up', [AuthController::class, 'signUp'])->name('auth.sign-up');
+Route::post('/sign-out', [AuthController::class, 'signOut'])->name('auth.sign-out');
 
-Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+Route::middleware(['auth'])->group(function() {
+    Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+});
+
