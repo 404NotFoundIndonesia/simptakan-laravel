@@ -6,18 +6,18 @@
         </a>
         <ul class="sidebar-nav">
             <li class="sidebar-header">
-                Pages
+                Menu Utama
             </li>
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Route::is('dashboard') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('dashboard') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Dasbor</span>
                 </a>
             </li>
 
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="pages-profile.html">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
+            <li class="sidebar-item {{ Route::is('book.*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ route('book.index') }}">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Katalog</span>
                 </a>
             </li>
 

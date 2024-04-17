@@ -63,6 +63,11 @@ class User extends Authenticatable
                     return asset('404_Black.jpg');
                 }
 
+                if (str_starts_with($this->avatar, 'http')) {
+                    return $this->avatar;
+                }
+
+                // TODO: Replace with path to laravel storage
                 return $this->avatar;
             }
         );

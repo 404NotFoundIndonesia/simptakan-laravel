@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,5 +15,7 @@ Route::post('/sign-out', [AuthController::class, 'signOut'])->name('auth.sign-ou
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/catalogue', [BookController::class, 'index'])->name('book.index');
 });
 
